@@ -1,0 +1,17 @@
+{
+   "name" : "Hidelink",
+   "version" : "1.0",
+   "description" : "Hide anchers",
+   "icons" : {
+      "128" : "application.png"
+   },
+   "content_scripts": [
+      {
+         "js" : [
+            "hideLinkListener.js",
+            "hideLink.js"
+               ],
+         "matches" : ["http://*/*", "https://*/*"]
+      }
+   ]
+}
