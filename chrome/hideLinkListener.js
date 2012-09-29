@@ -1,5 +1,5 @@
 var HideLinkListener = function() {
-   this.keyIsHidden = false;
+   this.linkIsHidden = false;
    this.targetKey   = 65; // 'a'
    this.anchors;
 };
@@ -11,9 +11,9 @@ HideLinkListener.prototype = {
          this.keyPressed(event);
    },
    keyPressed : function(event) {
-      if (this.keyIsHidden || event.altKey  || event.shiftKey || event.ctrlKey )
+      if (this.linkIsHidden || event.altKey  || event.shiftKey || event.ctrlKey )
          return;
-      this.keyIsHidden = true;
+      this.linkIsHidden = true;
       this.anchors = document.getElementsByTagName('a');
       var i;
       for (i = 0; i < this.anchors.length; i++) {
@@ -23,13 +23,13 @@ HideLinkListener.prototype = {
       }
    },
    keyReleased : function(event) {
-      if (!this.keyIsHidden)
+      if (!this.linkIsHidden)
          return;
       var i;
       for (i = 0; i < this.anchors.length; i++) {
          var href = this.anchors[i].getAttribute('data-href-cache'); 
          this.anchors[i].setAttribute('href', href);
       }
-      this.keyIsHidden = false;
+      this.linkIsHidden = false;
    }
 };
