@@ -7,12 +7,11 @@ HideLinkListener.prototype = {
    handleEvent : function(event) {
       if (event.type === 'keyup' || event.type === 'blur')
          this.keyReleased(event);
-      else if (event.type === 'keydown') 
+      else if (event.keyCode == this.targetKey && event.type === 'keydown') 
          this.keyPressed(event);
    },
    keyPressed : function(event) {
-      if (this.keyIsHidden || event.altKey  || event.shiftKey 
-         || event.ctrlKey  || event.keyCode != this.targetKey)
+      if (this.keyIsHidden || event.altKey  || event.shiftKey || event.ctrlKey )
          return;
       this.keyIsHidden = true;
       this.anchors = document.getElementsByTagName('a');
