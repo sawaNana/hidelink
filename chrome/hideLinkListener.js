@@ -6,12 +6,12 @@ var HideLinkListener = function() {
 HideLinkListener.prototype = {
    handleEvent : function(event) {
       if (this.linkIsHidden && (event.type === 'keyup' || event.type === 'blur'))
-         this.keyReleased(event);
+         this.resetLink();
       else if (event.keyCode == this.targetKey && event.type === 'keydown' 
       	&& !(this.linkIsHidden || event.altKey  || event.shiftKey || event.ctrlKey )
-         this.keyPressed(event);
+         this.hideLink();
    },
-   keyPressed : function(event) {
+   hideLink : function() {
       this.linkIsHidden = true;
       this.anchors = document.getElementsByTagName('a');
       var i;
@@ -21,7 +21,7 @@ HideLinkListener.prototype = {
          this.anchors[i].removeAttribute('href');
       }
    },
-   keyReleased : function(event) {
+   resetLink : function() {
       var i;
       for (i = 0; i < this.anchors.length; i++) {
          var href = this.anchors[i].getAttribute('data-href-cache'); 
