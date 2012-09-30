@@ -17,14 +17,18 @@ HideLinkListener.prototype = {
       var i;
       for (i = 0; i < this.anchors.length; i++) {
          var href = this.anchors[i].href;
-         this.anchors[i].setAttribute('data-href-cache', href);
+	 if (typeof href === 'undefined')
+	      continue;
+         this.anchors[i].setAttribute('data-hidelink-href-cache', href);
          this.anchors[i].removeAttribute('href');
       }
    },
    resetLink : function() {
       var i;
       for (i = 0; i < this.anchors.length; i++) {
-         var href = this.anchors[i].getAttribute('data-href-cache'); 
+         var href = this.anchors[i].getAttribute('data-hidelink-href-cache'); 
+	 if (typeof href === 'undefined')
+	      continue;
          this.anchors[i].setAttribute('href', href);
       }
       this.linkIsHidden = false;
