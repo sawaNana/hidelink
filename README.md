@@ -18,6 +18,10 @@ How to Use
 ------
 Just press 'a' key.
 
+Notice
+------
+This extension is now work when IME is enabled.
+
 LISCENSE
 ----------
 Copyright &copy; 2011 sawaNana
